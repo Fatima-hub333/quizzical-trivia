@@ -29,8 +29,7 @@ Additional description about the project and its features.
 
 ![screenshot](./src/images/quizzical-trivia.png)
 
-## [LiveDemo] 
-(https://melodic-biscotti-076739.netlify.app/)
+## [LiveDemo](https://melodic-biscotti-076739.netlify.app/)
 
 ## Getting Started
 
