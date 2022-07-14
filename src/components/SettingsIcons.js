@@ -1,9 +1,12 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable react/require-default-props */
 /* eslint-disable no-unused-expressions */
+/* eslint-disable linebreak-style */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Home as HomeIcon, Sun as SunIcon, Moon as MoonIcon } from 'react-feather';
+import {
+  Home as HomeIcon, Sun as SunIcon, Moon as MoonIcon,
+  /* Volume2 as SoundIcon, VolumeX as SoundOffIcon */ } from 'react-feather';
 
 SettingsIcons.propTypes = {
   toggleIsHome: PropTypes.func,
@@ -12,7 +15,7 @@ SettingsIcons.propTypes = {
   showHomeIcon: PropTypes.bool,
 };
 
-export default function SettingsIcons({
+function SettingsIcons({
   toggleIsHome, theme, toggleTheme, showHomeIcon = true,
 }) {
   let homeIconStyleObj;
@@ -29,7 +32,9 @@ export default function SettingsIcons({
 
       {theme === 'light'
         ? <SunIcon className="icon sunIcon" size={30} onClick={toggleTheme} />
-        : <MoonIcon className="icon moonIcon" size={30} onClick={toggleIsHome} />}
+        : <MoonIcon className="icon moonIcon" size={30} onClick={toggleTheme} />}
     </>
   );
 }
+
+export default SettingsIcons;

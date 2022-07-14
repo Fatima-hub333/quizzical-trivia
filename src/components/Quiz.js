@@ -1,21 +1,28 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/button-has-type */
+/* eslint-disable no-plusplus */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable react/button-has-type */
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable max-len */
+/* eslint-disable no-console */
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/require-default-props */
+/* eslint-disable no-use-before-define */
+/* eslint-disable linebreak-style */
 import React, { useEffect, useState } from 'react';
-import ProtoTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
-import Question from 'Question';
 import { THEME } from '../constant';
+import Question from './Question';
 import SettingsIcons from './SettingsIcons';
 import blueBlob from '../images/blueBlob.png';
 import yellowBlob from '../images/yellowBlob.png';
 
-Quiz.ProtoTypes = {
-  toggleIsHome: ProtoTypes.func,
-  formData: ProtoTypes.object,
-  theme: ProtoTypes.string,
-  toggleTheme: ProtoTypes.func,
+Quiz.propTypes = {
+  toggleIsHome: PropTypes.func,
+  formData: PropTypes.object,
+  theme: PropTypes.string,
+  toggleTheme: PropTypes.func,
 };
 
 export default function Quiz({
@@ -67,8 +74,8 @@ export default function Quiz({
       .finally(() => setIsLoading(false));
   }, [resetQuiz, amountOfQuestions, answerType, category, difficulty]);
 
-  // question ID & answerID mathe the correct answer and update held
-  // answerID is made in Question.js with .map(_, _.id)
+  // qId and aID match the correct answer and update held
+  // aID is made in Question.js with .map(_, _.id)
   function updateHeld(qID, aID) {
     setQuizData((prevQuizData) => prevQuizData.map((question) => {
       if (qID !== question.id) {
@@ -77,6 +84,7 @@ export default function Quiz({
       const newAnswers = question.allAnswers.map((answer) => (answer.id === aID
         ? { ...answer, isHeld: !answer.isHeld }
         : { ...answer, isHeld: false }));
+
       return { ...question, allAnswers: newAnswers };
     }));
   }
@@ -126,7 +134,7 @@ export default function Quiz({
     )
     : (
       <div className="quiz__footer quiz__footer--finished">
-        <p className="quiz__finalText">{`You Scored ${score}/${formData.amountOfQuestions} answers`}</p>
+        <p className="quiz__finalText">{`You scored ${score}/${formData.amountOfQuestions} answers`}</p>
         <button className="btn quiz__btn" onClick={reset}>Play Again</button>
       </div>
     );

@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-no-bind */
+/* eslint-disable linebreak-style */
 import React, { useState, useEffect } from 'react';
 import Quiz from './components/Quiz';
 import Home from './components/Home';
@@ -9,13 +10,12 @@ export default function App() {
 
   const [isHome, setIsHome] = useState(true);
   const [theme, setTheme] = useState(savedTheme || 'light');
-
-  // moved formData Up, so both Home.js & Quiz.js can use the state
+  // moved formData UP, so both Home.js & Quiz.js can use the state
   const [formData, setFormData] = useState({
     category: 'any',
     difficulty: '',
     answerType: '',
-    anoumtOfQuestions: '5',
+    amountOfQuestions: '5',
   });
 
   function toggleIsHome() {
@@ -41,25 +41,25 @@ export default function App() {
   return (
     <div className="app">
       {
-        isHome
-          ? (
-            <Home
-              toggleIsHome={toggleIsHome}
-              formData={formData}
-              handleFormChange={handleFormChange}
-              theme={theme}
-              toggleTheme={toggleTheme}
-            />
-          )
-          : (
-            <Quiz
-              formData={formData}
-              toggleIsHome={toggleIsHome}
-              toggleTheme={toggleTheme}
-              theme={theme}
-            />
-          )
-      }
+                isHome
+                  ? (
+                    <Home
+                      toggleIsHome={toggleIsHome}
+                      formData={formData}
+                      handleFormChange={handleFormChange}
+                      theme={theme}
+                      toggleTheme={toggleTheme}
+                    />
+                  )
+                  : (
+                    <Quiz
+                      formData={formData}
+                      toggleIsHome={toggleIsHome}
+                      toggleTheme={toggleTheme}
+                      theme={theme}
+                    />
+                  )
+            }
     </div>
   );
 }

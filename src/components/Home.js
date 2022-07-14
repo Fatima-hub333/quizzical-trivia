@@ -1,8 +1,10 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/button-has-type */
-/* eslint-disable react/prop-types */
-/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/no-unused-prop-types */
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/require-default-props */
 /* eslint-disable no-use-before-define */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/button-has-type */
+/* eslint-disable linebreak-style */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { THEME } from '../constant';
@@ -11,9 +13,8 @@ import Modal from './Modal';
 import About from './About';
 import blueBlob from '../images/blueBlobHome.png';
 import yellowBlob from '../images/yellowBlobHome.png';
-// eslint-disable-next-line linebreak-style
 
-Home.PropTypes = {
+Home.propTypes = {
   toggleIsHome: PropTypes.func,
   formData: PropTypes.object,
   handleFormChange: PropTypes.func,
@@ -23,7 +24,7 @@ Home.PropTypes = {
 };
 
 export default function Home({
-  toggleIsHome, formData, handleFormChange, theme, toggleTheme, isHome,
+  toggleIsHome, formData, handleFormChange, theme, toggleTheme,
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const customTheme = THEME[theme];
@@ -45,8 +46,8 @@ export default function Home({
           showHomeIcon={false}
         />
       </div>
-      <h1 className="home__title">Quizzica;</h1>
-      <p className="home__text">The Ultimate Trivia Game!</p>
+      <h1 className="home__title">Quizzical</h1>
+      <p className="home__text">The ultimate trivia game!</p>
 
       <form>
         <label htmlFor="amountOfQuestions">Amount of Questions</label>
@@ -78,7 +79,7 @@ export default function Home({
           <option value="15">Video Games</option>
           <option value="16">Board Games</option>
           <option value="17">Science & Nature</option>
-          <option value="18">Computer</option>
+          <option value="18">Computers</option>
           <option value="19">Mathematics</option>
           <option value="20">Mythology</option>
           <option value="21">Sports</option>
@@ -96,7 +97,7 @@ export default function Home({
         </select>
         <br />
         <label htmlFor="difficulty">Difficulty</label>
-        <seclect
+        <select
           onChange={handleFormChange}
           value={formData.difficulty}
           name="difficulty"
@@ -105,13 +106,11 @@ export default function Home({
           <option value="">Any</option>
           <option value="easy">Easy</option>
           <option value="medium">Medium</option>
-          <option calue="hard">Hard</option>
-        </seclect>
+          <option value="hard">Hard</option>
+        </select>
       </form>
       <div className="home__btnCtr" style={{ width: 'min(235px, 90%)' }}>
-        <button onClick={toggleIsHome} className="btn home__stratBtn">
-          Play
-        </button>
+        <button onClick={toggleIsHome} className="btn home__startBtn">Play</button>
         <button onClick={toggleModal} className="btn home__aboutBtn">About</button>
       </div>
 
